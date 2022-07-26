@@ -5,7 +5,7 @@ import random
 import time
 import cv2
 import numpy as np
-import darknet
+from . import darknet
 
 
 def parser():
