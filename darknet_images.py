@@ -114,7 +114,7 @@ def image_detection(image, network, class_names, class_colors, thresh, nms_tresh
     return image, detections
 
 
-def batch_detection(network, images, class_names, class_colors,
+def batch_detection(images, network, class_names, class_colors,
                     thresh=0.25, hier_thresh=.5, nms=.45, batch_size=4):
     image_height, image_width, _ = check_batch_shape(images, batch_size)
     darknet_images = prepare_batch(images, network)
