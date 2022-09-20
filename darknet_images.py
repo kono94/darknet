@@ -98,12 +98,17 @@ def prepare_batch(images, network, channels=3):
 
 
 # image is an RGB image
-def image_detection(image, network, class_names, class_colors, thresh, nms_tresh = 0.45):
+def image_detection(image, network, class_names, class_colors, thresh, nms_tresh = 0.45, gray = False):
     # Darknet doesn't accept numpy images.
     # Create one with image we reuse for each detect
     width = darknet.network_width(network)
     height = darknet.network_height(network)
-    darknet_image = darknet.make_image(width, height, 3)
+    if gray:
+        c = 1
+    else:
+        c = 3
+        
+    darknet_image = darknet.make_image(width, height, c)
 
     image_resized = cv2.resize(image, (width, height),
                                interpolation=cv2.INTER_LINEAR)
